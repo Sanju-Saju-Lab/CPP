@@ -3,21 +3,14 @@ using namespace std;
 
 class Stack {
 private:
-    int* stack;     // Dynamic array to store stack elements
-    int top;        // Index of the top element
-    int capacity;   // Maximum capacity of the stack
+    static const int MAX_SIZE = 10; // Maximum capacity of the stack
+    int stack[MAX_SIZE];  // Array to store stack elements
+    int top;              // Index of the top element
 
 public:
     // Constructor to initialize the stack
-    Stack(int size) {
-        stack = new int[size];
-        top = -1;
-        capacity = size;
-    }
-
-    // Destructor to release allocated memory
-    ~Stack() {
-        delete[] stack;
+    Stack() {
+        top = -1;  // Initialize the stack as empty
     }
 
     // Push operation
@@ -57,7 +50,7 @@ public:
 
     // Check if the stack is full
     bool isFull() {
-        return top == capacity - 1;
+        return top == MAX_SIZE - 1;
     }
 
     // Display the stack
@@ -75,11 +68,7 @@ public:
 };
 
 int main() {
-    int size;
-    cout << "Enter the size of the stack: ";
-    cin >> size;
-
-    Stack stack(size); // Create a stack of the specified size
+    Stack stack;  // Create a stack with the fixed size
 
     while (true) {
         cout << "\nChoose an operation:\n";
